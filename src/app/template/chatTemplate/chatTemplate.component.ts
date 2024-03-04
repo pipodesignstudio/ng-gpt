@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ChatMessageComponent } from '@components/chat-bubbles/chatMessage/chatMessage.component';
 import { MyMessageComponent } from '@components/chat-bubbles/myMessage/myMessage.component';
 import { TextMessageBoxComponent } from '@components/text-boxes/textMessageBox/textMessageBox.component';
@@ -9,20 +10,20 @@ import { TypingLoaderComponent } from '@components/typingLoader/typingLoader.com
 import { Message } from '@interfaces/message.interface';
 import { OpeanAiService } from 'app/presentation/services/openai.service';
 
-
 @Component({
-  selector: 'app-orthography',
+  selector: 'app-chat-template',
   standalone: true,
   imports: [
     CommonModule,
-    ChatMessageComponent,
+    ReactiveFormsModule,
     MyMessageComponent,
+    ChatMessageComponent,
     TypingLoaderComponent,
     TextMessageBoxComponent,
     TextMessageBoxFileComponent,
     TextMessageBoxSelectComponent
   ],
-  templateUrl: './orthography.component.html',
+  templateUrl: './chatTemplate.component.html',
   styles: `
     :host {
       display: block;
@@ -30,9 +31,8 @@ import { OpeanAiService } from 'app/presentation/services/openai.service';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class OrthographyComponent {
-
-  public messages =  signal<Message[]>([{text: 'Hola Mundo', isGtpt: true}]);
+export class ChatTemplateComponent { 
+  public messages =  signal<Message[]>([]);
   public isLoading = signal(false);
   public openAiService = inject(OpeanAiService);
 
@@ -44,4 +44,4 @@ export default class OrthographyComponent {
   handleMessageWithSelect(event:TextMessageBoxEvent) {
 
   }
- }
+}
