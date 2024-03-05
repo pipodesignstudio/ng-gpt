@@ -4,9 +4,11 @@
 
             @for (message of messages(); track $index) {
                 @if(message.isGtpt){
-                    <app-chat-message
-                [text]="message.text"
-                ></app-chat-message>
+                    <app-gpt-message-orthography
+                    [errors]="message.info!.errors"
+                    [text]="message.text"
+                    [userScore]="message.info!.userScore"
+                    />
                 } @else {
                     <app-my-message
                     [text]="message.text"
@@ -22,17 +24,8 @@
             }
         </div>
     </div>
-    <!-- <app-text-message-box
+    <app-text-message-box
     placeholder="Esbir aquí"
     (onMessage)="handleMessage($event)"
-    ></app-text-message-box> -->
-    <!-- <app-text-message-box-file
-    placeholder="Esbir aquí"
-    (onMessage)="handleMessage($event)"
-    /> -->
-    <app-text-message-box-select
-    placeholder="Escribir aquí"
-    [options]="[{id:'1', value: '1'}, {id:'2', value: '2'}]"
-    (onMessage)="handleMessageWithSelect($event)"
-    />
+    ></app-text-message-box>
 </div>
