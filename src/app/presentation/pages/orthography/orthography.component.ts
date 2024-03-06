@@ -34,31 +34,42 @@ import { OpeanAiService } from 'app/presentation/services/openai.service';
 })
 export default class OrthographyComponent {
 
-  public messages =  signal<Message[]>([{text: 'Hola Mundo', isGtpt: true}]);
+  public messages = signal<Message[]>([]);
   public isLoading = signal(false);
-  public openAiService = inject(OpeanAiService);
+  public openAiService = inject( OpeanAiService );
 
 
-  handleMessage(prompt: string) {
+
+  handleMessage( prompt: string ) {
+
     this.isLoading.set(true);
-    this.messages.update((prev) => [
+
+    this.messages.update( (prev) => [
       ...prev,
       {
-        isGtpt: false,
+        isGpt: false,
         text: prompt
       }
     ]);
-    this.openAiService.checkOrthography(prompt).subscribe(resp => {
-      this.isLoading.set(false);
-      this.messages.update((prev) => [
-        ...prev,
-        {
-          isGtpt: true,
-          text: resp.message,
-          info: resp
-        }
-      ]);
-    })
+
+
+    this.openAiService.checkOrthography( prompt )
+      .subscribe( resp => {
+        this.isLoading.set(false);
+
+        this.messages.update( prev => [
+          ...prev,
+          {
+            isGpt: true,
+            text: resp.message,
+            info: resp,
+          }
+        ])
+
+      })
+
+
+
   }
 
  }

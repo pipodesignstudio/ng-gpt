@@ -1,6 +1,6 @@
 export interface Message {
     text: string,
-    isGtpt:boolean
+    isGpt:boolean
     info?: {
         userScore: number;
         errors: string[];

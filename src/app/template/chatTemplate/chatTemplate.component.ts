@@ -37,7 +37,7 @@ export class ChatTemplateComponent {
   public openAiService = inject(OpeanAiService);
 
 
-  handleMessage(messageEvent: TextMessageEvent) {
+  handleMessage(prompt: string) {
     console.log(prompt);
   }
 
