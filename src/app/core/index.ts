@@ -2,4 +2,4 @@ export { prosConsStreamUseCase as prsoConsStreamUseCase } from "@use-cases/pros-
 
 export { orthographyUseCase } from "@use-cases/orthography/orthography.use-case";
 
-export { pronsConsUseCase } from "@use-cases/pros-cons/pros-cons.use-case";
+export { prosConsUseCase as pronsConsUseCase } from "@use-cases/pros-cons/pros-cons.use-case";

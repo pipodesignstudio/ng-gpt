@@ -1,7 +1,7 @@
 import type { ProsConsResponse } from "@interfaces/pros-cons-response";
 import { environment } from "environments/environment.development";
 
-export const pronsConsUseCase = async (prompt:string) => {
+export const prosConsUseCase = async (prompt:string) => {
     try {
         const resp = await fetch(`${environment.backendApi}/pros-cons-discusser`, {
             method: "POST",

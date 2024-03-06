@@ -6,7 +6,7 @@
       text="¿Qué deseas comparar en directo?"
     />
 
-            @for (message of messages(); track $index) {
+            @for (message of messages(); track message.text) {
                 @if(message.isGpt){
                     <app-chat-message
                 [text]="message.text"
@@ -27,7 +27,7 @@
         </div>
     </div>
      <app-text-message-box
-    placeholder="Esbir aquí"
+    placeholder="Escribir aquí"
     (onMessage)="handleMessage($event)"
     ></app-text-message-box> 
 </div>

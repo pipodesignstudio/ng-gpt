@@ -30,12 +30,45 @@ import { OpeanAiService } from 'app/presentation/services/openai.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ProsConsStreamsComponent { 
+
   public messages =  signal<Message[]>([]);
   public isLoading = signal(false);
   public openAiService = inject(OpeanAiService);
 
+  public abortSignal = new AbortController();
 
   async handleMessage(prompt: string) {
-    await this.openAiService.prosConsDiscusserStream(prompt)
+    this.abortSignal.abort();
+    this.abortSignal = new AbortController();
+    this.messages.update(prev => [
+      ...prev,
+      {
+        isGpt: false,
+        text: prompt
+      },
+      {
+        isGpt: true,
+        text: '...'
+      }
+    ]
+
+    )
+
+    this.isLoading.set(true);
+
+    const stream =  this.openAiService.prosConsDiscusserStream(prompt, this.abortSignal.signal);
+    this.isLoading.set(false);
+
+
+    for await (const text of  stream) {
+      this.handleStreamResponse(text);
+    }
   }
+
+  handleStreamResponse(message:string) {
+    this.messages().pop();
+    const messages = this.messages();
+    this.messages.set([...messages, {isGpt: true, text: message}])
+  }
+
 }
