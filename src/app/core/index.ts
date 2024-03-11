@@ -1,3 +1,5 @@
+export { textToAudioUseCase } from "@use-cases/audios/text-to-audio.use-case";
+
 export { prosConsStreamUseCase as prsoConsStreamUseCase } from "@use-cases/pros-cons-stream/pros-cons-stream.use-case";
 
 export { orthographyUseCase } from "@use-cases/orthography/orthography.use-case";

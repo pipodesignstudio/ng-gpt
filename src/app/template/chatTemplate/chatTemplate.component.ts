@@ -19,8 +19,6 @@ import { OpeanAiService } from 'app/presentation/services/openai.service';
     MyMessageComponent,
     ChatMessageComponent,
     TypingLoaderComponent,
-    TextMessageBoxComponent,
-    TextMessageBoxFileComponent,
     TextMessageBoxSelectComponent
   ],
   templateUrl: './chatTemplate.component.html',

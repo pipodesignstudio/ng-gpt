@@ -3,7 +3,7 @@ import { ProsConsResponse } from '@interfaces/pros-cons-response';
 import { orthographyUseCase } from '@use-cases/orthography/orthography.use-case';
 import { prosConsUseCase } from '@use-cases/pros-cons/pros-cons.use-case';
 import { translateTextUseCase } from '@use-cases/translate/translate-text.use-case';
-import { prsoConsStreamUseCase } from 'app/core';
+import { prsoConsStreamUseCase, textToAudioUseCase } from 'app/core';
 import { Observable, from } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
@@ -23,4 +23,8 @@ export class OpeanAiService {
     translateText(prompt: string, lang: string) {
         return from(translateTextUseCase(prompt, lang));
       }
+
+      textToAudio(prompt: string, voice: string) {
+        return from(textToAudioUseCase(prompt, voice));
+      } 
 }
