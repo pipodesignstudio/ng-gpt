@@ -2,7 +2,7 @@
     <div class="chat-messages">
         <div class="grid gap-y-2">
             <app-chat-message
-      text="¿Qué deseas pasar a audio?"
+      text="¿Qué deseas que lea?"
     />
             @for (message of messages(); track $index) {
                 @if(message.isGpt){
@@ -27,7 +27,7 @@
     </div>
 
     <app-text-message-box-select
-    placeholder="Escribir aquí"
+    placeholder="Introduce el texto aquí"
     [options]="voices()"
     (onMessage)="handleMessageWithSelect($event)"
     />
