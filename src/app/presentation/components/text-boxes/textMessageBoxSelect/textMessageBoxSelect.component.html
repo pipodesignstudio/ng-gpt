@@ -5,7 +5,7 @@ class="flex flex-row items-center h-16 rounded-xl bg-white w-full px-4">
     <div class="flex-grow">
         <div class="flex">
             <input type="text" autofocus 
-            class="flex w-full border rounded-xl text-gray-800 focus:outline-none focus:border-lime-50 pl-4 h-10"
+            class="flex bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-lime-500"
             [placeholder]="placeholder"
             formControlName="prompt"
             />
@@ -20,7 +20,7 @@ class="flex flex-row items-center h-16 rounded-xl bg-white w-full px-4">
         </div>
     </div>
     <div class="ml-4">
-        <button class="btn-primary" type="submit" [disabled]="form.invalid">
+        <button class="btn-primary rounded shadow" type="submit" [disabled]="form.invalid">
             <span class="mr-2">Enviar</span>
             <i class="fa-regular fa-paper-plane"></i>
         </button>

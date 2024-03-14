@@ -12,23 +12,19 @@
           @if( message.isGpt ) {
             <app-chat-message
               [text]="message.text"
+              [imageInfo]="message.imageInfo"
             />
           } @else {
             <app-my-message [text]="message.text"
             />
           }
         }
-  
-  
-  
-  
-  
-  
+    
+
         @if (isLoading()) {
           <app-typing-loader />
         }
-  
-  
+    
   
       </div>
     </div>

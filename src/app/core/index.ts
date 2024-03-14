@@ -1,3 +1,5 @@
+export { imageVariationUseCase as imageVariation } from "@use-cases/image-generation/image-variation.use-case";
+
 export { imageGeneration } from "@use-cases/image-generation/image-generation.use-case";
 
 export { audioToTextUseCase } from "@use-cases/audios/audio-to-text.use-case";

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ProsConsResponse } from '@interfaces/pros-cons-response';
+import { imageVariationUseCase } from '@use-cases/image-generation/image-variation.use-case';
 import { orthographyUseCase } from '@use-cases/orthography/orthography.use-case';
 import { prosConsUseCase } from '@use-cases/pros-cons/pros-cons.use-case';
 import { translateTextUseCase } from '@use-cases/translate/translate-text.use-case';
@@ -34,5 +35,8 @@ export class OpeanAiService {
       imageGeneration(prompt:string, originalImage?:string,
         maskImage?:string) {
         return from (imageGeneration(prompt, originalImage, maskImage));
+      }
+      createImageVariation(originalImage:string) {
+        return from (imageVariationUseCase(originalImage));
       }
 }

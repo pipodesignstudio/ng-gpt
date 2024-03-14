@@ -8,21 +8,18 @@ interface Image {
 }
 
 
-export const imageGeneration = async (
-  prompt: string,
-  originalImage?: string,
+export const imageVariationUseCase = async (
+  originalImage: string,
   maskImage?: string
 ):Promise<GeneratedImage> => {
   try {
-    const resp = await fetch(`${environment.backendApi}/image-generation`, {
+    const resp = await fetch(`${environment.backendApi}/image-variation`, {
       method: 'POST',
       headers: {
         'Content-type': 'Application/json',
       },
       body: JSON.stringify({
-        prompt,
-        originalImage,
-        maskImage,
+        baseImage: originalImage,
       }),
     });
     const {url, revised_prompt:alt} = await resp.json();
