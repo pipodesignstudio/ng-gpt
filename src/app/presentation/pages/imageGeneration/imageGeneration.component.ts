@@ -39,25 +39,22 @@ export default class ImageGenerationComponent {
     this.isLoading.set(true);
     this.messages.update( prev => [...prev, { isGpt:false, text: prompt }]  );
 
-    // this.openAiService.imageGeneration(prompt)
-    //   .subscribe( resp => {
-    //     this.isLoading.set(false);
-    //     if ( !resp ) return;
+    this.openAiService.imageGeneration(prompt)
+      .subscribe( resp => {
+        this.isLoading.set(false);
+        if ( !resp ) return;
 
-    //     this.messages.update(prev => [
-    //       ...prev,
-    //       {
-    //         isGpt: true,
-    //         text: resp.alt,
-    //         imageInfo: resp,
-    //       }
-    //     ]);
-
-
-    //   })
+        this.messages.update(prev => [
+          ...prev,
+          {
+            isGpt: true,
+            text: resp.alt,
+            imageInfo: resp,
+          }
+        ]);
 
 
-
+      })
 
 
   }
