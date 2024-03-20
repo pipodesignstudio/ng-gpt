@@ -1,1 +1,40 @@
-<p>assistantPage works!</p>,
+<div class="chat-container">
+    <div class="chat-messages">
+        <div class="grid gap-y-2">
+            <app-chat-message
+            text="¿Cómo te puedo ayudar?"
+          />
+            @for (message of messages(); track $index) {
+                @if(message.isGpt){
+                    <app-chat-message
+                [text]="message.text"
+                ></app-chat-message>
+                } @else {
+                    <app-my-message
+                    [text]="message.text"
+                    ></app-my-message>
+                }
+
+            }
+
+            
+            
+            @if (isLoading()) {
+                <app-typing-loader></app-typing-loader>
+            }
+        </div>
+    </div>
+    <!-- <app-text-message-box
+    placeholder="Esbir aquí"
+    (onMessage)="handleMessage($event)"
+    ></app-text-message-box> -->
+    <!-- <app-text-message-box-file
+    placeholder="Esbir aquí"
+    (onMessage)="handleMessage($event)"
+    /> -->
+    <app-text-message-box-select
+    placeholder="Escribir aquí"
+    [options]="[{id:'1', value: '1'}, {id:'2', value: '2'}]"
+    (onMessage)="handleMessageWithSelect($event)"
+    />
+</div>
